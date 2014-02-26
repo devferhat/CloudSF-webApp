@@ -30,19 +30,19 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author ferhat
  */
 @Entity
-@Table(name = "CloudProvider")
+@Table(name = "CloudProvider", catalog = "CloudSF", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CloudProvider.findAll", query = "SELECT c FROM CloudProvider c"),
-    @NamedQuery(name = "CloudProvider.findByProviderName", query = "SELECT c FROM CloudProvider c WHERE c.providerName = :providerName"),
+    @NamedQuery(name = "CloudProvider.findByProvidername", query = "SELECT c FROM CloudProvider c WHERE c.providername = :providername"),
     @NamedQuery(name = "CloudProvider.findByProviderURL", query = "SELECT c FROM CloudProvider c WHERE c.providerURL = :providerURL"),
     @NamedQuery(name = "CloudProvider.findByProviderCode", query = "SELECT c FROM CloudProvider c WHERE c.providerCode = :providerCode"),
     @NamedQuery(name = "CloudProvider.findByProviderDescription", query = "SELECT c FROM CloudProvider c WHERE c.providerDescription = :providerDescription")})
 public class CloudProvider implements Serializable {
     private static final long serialVersionUID = 1L;
     @Size(max = 100)
-    @Column(name = "Provider_Name")
-    private String providerName;
+    @Column(name = "providername")
+    private String providername;
     @Size(max = 300)
     @Column(name = "Provider_URL")
     private String providerURL;
@@ -86,12 +86,12 @@ public class CloudProvider implements Serializable {
         this.providerCode = providerCode;
     }
 
-    public String getProviderName() {
-        return providerName;
+    public String getProvidername() {
+        return providername;
     }
 
-    public void setProviderName(String providerName) {
-        this.providerName = providerName;
+    public void setProvidername(String providername) {
+        this.providername = providername;
     }
 
     public String getProviderURL() {

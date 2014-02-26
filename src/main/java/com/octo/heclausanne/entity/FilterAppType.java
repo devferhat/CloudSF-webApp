@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ferhat
  */
 @Entity
-@Table(name = "FilterAppType")
+@Table(name = "FilterAppType", catalog = "CloudSF", schema = "public")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FilterAppType.findAll", query = "SELECT f FROM FilterAppType f"),
