@@ -51,15 +51,15 @@ and open the template in the editor.
 
                             </h:commandLink>  
                         </div>
-                       
+
                     </header>
                     <subheader>
                         <div id="subheader-content">
-                             <h:commandLink                             
-                                action="index?faces-redirect=true"
+                            <h:commandLink                             
+                                action="index?faces-redirect=true"                           
                                 style=" margin-left: 934px;                                           
                                 float: left;color: #b51628 !important;" value="GER">                    
-                             </h:commandLink>
+                            </h:commandLink>
                             <h:commandLink                             
                                 action="index?faces-redirect=true"
                                 style=" margin-left: 10px;                                           
@@ -70,33 +70,46 @@ and open the template in the editor.
                                 style=" margin-left: 1px;                                           
                                 float: right;color: #b51628 !important;" value="ENG">                    
                             </h:commandLink>  
+                            <h:outputLink id="openDialogLink" value="javascript:void(0)" onclick="PF('dlg').show()" 
+                                        style=" margin-left: 950px;                                           
+                                float: left;">
+                                Languages</h:outputLink>  
                         </div>
                     </subheader>
+                    <p:growl id="growl" showDetail="true" life="2000" />  
+                    <p:dialog id="Languages" widgetVar="dlg" header="Not Yet" width="425"  
+                              resizable="false" showEffect="clip" hideEffect="clip">  
+
+                        <p:ajax event="close" update="growl" listener="#{cloudProviderController.handleClose}" />  
+
+                        <p:graphicImage value="/img/swissmade3.PNG" />  
+
+                    </p:dialog>
                 </h:form>
-                
-                    <div id="main">
-                        <div class="visual-block">
-                            <h2>CloudSF</h2>
-                            <span class="heading">Cloud Services Selection Framework </span>
-                            <p:graphicImage value="img/swissmade3.PNG" alt="CloudSF" ></p:graphicImage>
-                            <div style="border-top-width: 1px; border-top-style: solid; border-top-color: 
-                                 rgb(204, 204, 204); padding: 10px 0px;" >
-                                <p:panelGrid columns="2" >
-                                    <p:graphicImage value="img/how.PNG" alt="CloudSF"  width="720" 
-                                                    height="215" ></p:graphicImage>
-                                    <p:media value="http://www.youtube.com/v/ae_DKNwK_ms" width="320" 
-                                             height="215" player="flash" />
 
-                                </p:panelGrid> 
+                <div id="main">
+                    <div class="visual-block">
+                        <h2>CloudSF</h2>
+                        <span class="heading">Cloud Services Selection Framework </span>
+                        <p:graphicImage value="img/swissmade3.PNG" alt="CloudSF" ></p:graphicImage>
+                        <div style="border-top-width: 1px; border-top-style: solid; border-top-color: 
+                             rgb(204, 204, 204); padding: 10px 0px;" >
+                            <p:panelGrid columns="2" >
+                                <p:graphicImage value="img/how.PNG" alt="CloudSF"  width="720" 
+                                                height="215" ></p:graphicImage>
+                                <p:media value="http://www.youtube.com/v/ae_DKNwK_ms" width="320" 
+                                         height="215" player="flash" />
 
-                            </div>
-                            <div style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: 
-                                 rgb(204, 204, 204)" >
-
-                            </div>
+                            </p:panelGrid> 
 
                         </div>
+                        <div style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: 
+                             rgb(204, 204, 204)" >
+
+                        </div>
+
                     </div>
+                </div>
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="325">

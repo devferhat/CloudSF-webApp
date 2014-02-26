@@ -17,7 +17,10 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.event.CloseEvent;
 
 /**
  *
@@ -139,7 +142,13 @@ public class CloudProviderController implements Serializable {
     public List<CloudProvider> getItemsAvailableSelectOne() {
         return getCloudProviderFacade().findAll();
     }
-    
+    public void handleClose(CloseEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                event.getComponent().getId() + " closed", "Not yet implemented?");
+
+        facesContext.addMessage(null, message);
+    }
   
     /*@FacesConverter(forClass = CloudProvider.class)
     public static class CloudProviderControllerConverter implements Converter {

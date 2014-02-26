@@ -65,8 +65,8 @@ and open the template in the editor.
                 </p:dataGrid>  
 
                 <p:dialog header="Cloud Provider Detail" widgetVar="cloudProviderDialog" 
-                          modal="false" closable="true" width="700">  
-                    <p:outputPanel id="cloudProviderDetail" style="text-align:center;"  >  
+                          closable="true" appendToBody="true" width="700">  
+                    <p:outputPanel id="cloudProviderDetail" style="text-align:center;" >  
 
                         <p:graphicImage value="/img/swisscom.jpeg" width="70" height="50"/>  
 
@@ -80,7 +80,7 @@ and open the template in the editor.
 
                             <h:outputLabel for="descr" value="#{bundle.ViewCloudProviderLabel_url}" />  
                             <h:inputTextarea  rows="3" id="descr"  disabled="true"
-                                              value="#{cloudProviderController.selected.providerUrl}" />  
+                                              value="#{cloudProviderController.selected.providerDescription}" />  
 
                         </h:panelGrid>  
                     </p:outputPanel>  
