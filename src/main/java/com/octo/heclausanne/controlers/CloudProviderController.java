@@ -17,26 +17,22 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
 
 /**
  *
  * @author ferhat
  */
-@Named("customerController")
+@Named("cloudProviderController")
 @Stateless
-public class CloudProviderControler implements Serializable {
+public class CloudProviderController implements Serializable {
 
     @EJB
     private CloudProviderFacade cloudProviderFacade;
     private List<CloudProvider> items = null;
     private CloudProvider selected;
  
-    public CloudProviderControler() {
+    public CloudProviderController() {
     }
 
     public CloudProviderFacade getCloudProviderFacade() {
@@ -144,7 +140,8 @@ public class CloudProviderControler implements Serializable {
         return getCloudProviderFacade().findAll();
     }
     
-    @FacesConverter(forClass = CloudProvider.class)
+  
+    /*@FacesConverter(forClass = CloudProvider.class)
     public static class CloudProviderControllerConverter implements Converter {
 
         @Override
@@ -152,7 +149,7 @@ public class CloudProviderControler implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CloudProviderControler controller = (CloudProviderControler) facesContext.getApplication().getELResolver().
+            CloudProviderController controller = (CloudProviderController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "cloudProviderController");
             return controller.getCloudProvider(getKey(value));
         }
@@ -186,5 +183,6 @@ public class CloudProviderControler implements Serializable {
         }
 
     }
+    */
 
 }
