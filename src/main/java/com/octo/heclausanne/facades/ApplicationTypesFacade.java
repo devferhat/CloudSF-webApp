@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ApplicationTypesFacade extends AbstractFacade<ApplicationTypes> {
-    @PersistenceContext(unitName = "com.OCTO.HECLausanne_CloudSF-web_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "com.OCTO.HECLausanne_CloudSF-webApp_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override
