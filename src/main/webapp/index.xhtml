@@ -36,7 +36,7 @@ and open the template in the editor.
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="ListCloudProvidersID">
+            <h:form id="ListCloudProvidersForm">
                 <p:dataGrid var="cloudProvider" value="#{cloudProviderController.items}" columns="3"  
                             rows="12" paginator="true"  
                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} 
@@ -45,14 +45,15 @@ and open the template in the editor.
 
                     <p:panel header="#{cloudProvider.providerName}" style="text-align:center">  
                         <h:panelGrid columns="1" style="width:100%">  
-                            <p:graphicImage value="/img/swisscom.jpeg"/> 
+                            <p:graphicImage value="/img/swisscom.jpeg" width="270" height="150"/> 
                             <h:panelGrid columns="2" style="font-weight: bold">
                                 <h:outputText value="#{bundle.ListCloudProviderURL}" style="color: #045491"/>
-                                <h:outputText value="#{cloudProvider.providerURL}"/>                             
+                                <h:outputText value="#{cloudProvider.providerUrl}"/>                             
                             </h:panelGrid> 
 
 
-                            <p:commandLink update=":form:cloudProviderDetail" oncomplete="PF('cloudProviderDialog').show()" 
+                            <p:commandLink update=":ListCloudProvidersForm:cloudProviderDetail" 
+                                           oncomplete="PF('cloudProviderDialog').show()" 
                                            title="View Detail">  
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />   
                                 <f:setPropertyActionListener value="#{cloudProvider}"   
@@ -63,22 +64,23 @@ and open the template in the editor.
 
                 </p:dataGrid>  
 
-                <p:dialog header="Cloud Provider Detail" widgetVar="cloudProviderDialog" modal="true">  
-                    <p:outputPanel id="cloudProviderDetail" style="text-align:center;">  
+                <p:dialog header="Cloud Provider Detail" widgetVar="cloudProviderDialog" 
+                          modal="false" closable="true" width="700">  
+                    <p:outputPanel id="cloudProviderDetail" style="text-align:center;"  >  
 
-                        <p:graphicImage value="img/swisscom.jpg"/>  
+                        <p:graphicImage value="/img/swisscom.jpeg" width="70" height="50"/>  
 
-                        <h:panelGrid  columns="2" cellpadding="5">  
+                        <h:panelGrid  columns="2">  
 
                             <h:outputLabel for="name" value="#{bundle.ViewCloudProviderLabel_name}" />  
                             <h:outputText id="name" value="#{cloudProviderController.selected.providerName}" />  
 
                             <h:outputLabel for="url" value="#{bundle.ViewCloudProviderLabel_url}" />  
-                            <h:outputText id="url" value="#{cloudProviderController.selected.providerURL}" />  
+                            <h:outputText id="url" value="#{cloudProviderController.selected.providerUrl}" />  
 
                             <h:outputLabel for="descr" value="#{bundle.ViewCloudProviderLabel_url}" />  
                             <h:inputTextarea  rows="3" id="descr"  disabled="true"
-                                              value="#{cloudProviderController.selected.providerURL}" />  
+                                              value="#{cloudProviderController.selected.providerUrl}" />  
 
                         </h:panelGrid>  
                     </p:outputPanel>  
