@@ -47,8 +47,8 @@ and open the template in the editor.
                         <h:panelGrid columns="1" style="width:100%">  
                             <p:graphicImage value="/img/swisscom.jpeg"/> 
                             <h:panelGrid columns="2" style="font-weight: bold">
-                                <h:outputText value="#{bundle.ListCloudProviderURL} style="color: #045491"/>
-                                              <h:outputText value="#{cloudProvider.providerURL}"/>                             
+                                <h:outputText value="#{bundle.ListCloudProviderURL}" style="color: #045491"/>
+                                <h:outputText value="#{cloudProvider.providerURL}"/>                             
                             </h:panelGrid> 
 
 
@@ -69,17 +69,17 @@ and open the template in the editor.
                         <p:graphicImage value="img/swisscom.jpg"/>  
 
                         <h:panelGrid  columns="2" cellpadding="5">  
-                            
+
                             <h:outputLabel for="name" value="#{bundle.ViewCloudProviderLabel_name}" />  
                             <h:outputText id="name" value="#{cloudProviderController.selected.providerName}" />  
 
                             <h:outputLabel for="url" value="#{bundle.ViewCloudProviderLabel_url}" />  
                             <h:outputText id="url" value="#{cloudProviderController.selected.providerURL}" />  
-                            
+
                             <h:outputLabel for="descr" value="#{bundle.ViewCloudProviderLabel_url}" />  
                             <h:inputTextarea  rows="3" id="descr"  disabled="true"
                                               value="#{cloudProviderController.selected.providerURL}" />  
-  
+
                         </h:panelGrid>  
                     </p:outputPanel>  
                 </p:dialog>
