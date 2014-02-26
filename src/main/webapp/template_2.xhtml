@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title><ui:insert name="title"> Default Title </ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputStylesheet library="awesome" name="css/font-awesome.css" />
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" autoUpdate="true" showSummary="true" showDetail="true" life="3000"/>
+        <p:layout  style="min-width:400px;min-height:3200px;" >
+            <p:layoutUnit position="north" size="500" >
+
+                <p:layout>
+                    <p:layoutUnit position="north" size="30" style="background-color:#424548 !important;
+                                  background-position:initial !important;
+                                  background-repeat:initial !important;
+                                  border-bottom-color:#56585C !important;
+                                  border-bottom-style:solid !important;
+                                  border-bottom-width:1px ;
+                                  width:100%; " >
+
+
+                    </p:layoutUnit>
+                    <p:layoutUnit position="center" >
+                        <div id="main">
+                            <div class="visual-block">
+                                <h2>CloudSF</h2>
+                                <span class="heading">Cloud Services selection Framework </span>
+                                <div style="border-top-width: 1px; border-top-style: solid; border-top-color: 
+                                     rgb(204, 204, 204); padding: 10px 0px; text-align:right;">
+                                    <p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="320" 
+                                             height="215" player="flash"/>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </p:layoutUnit>
+
+                </p:layout>
+
+
+
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="325">
+                <ui:insert name="filterBar"> </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"> </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100">
+                <ui:insert name="footer"> </ui:insert>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

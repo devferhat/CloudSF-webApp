@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"      
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AppName}"></h:outputText>
+        </ui:define>
+        
+        <ui:define name="filterBar">
+            <h:form id="FilterBarID">
+                <p:panel header="Layers" toggleable="true" toggleSpeed="0">
+
+                   
+                </p:panel>
+                <p:panel header="Legend" toggleable="true" toggleSpeed="0">
+                   
+                </p:panel>
+                <p:panel header="Overview" toggleable="true" toggleSpeed="0">
+                    <h:panelGroup styleClass="overviewPane" layout="block">
+                        <h:panelGroup id="overview" layout="block"></h:panelGroup>
+                    </h:panelGroup>
+                </p:panel>
+            </h:form>
+
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="BodyID">
+                <h:panelGroup id="mymapdiv" styleClass="mapPane" layout="block">
+                    <p:commandButton value="awesome ok !" icon="fa fa-cloud" />
+                    <p:commandButton value="awesome ok hello" icon="fa fa-bug" />
+                    <h:panelGroup styleClass="mapGeocoderPane" layout="block">
+                        <h:panelGroup id="geocoder" layout="block"></h:panelGroup>
+                    </h:panelGroup>
+                    <h:panelGroup styleClass="mapCoordinatesPane" layout="block">
+                        <h:panelGroup id="coordinates" layout="block"></h:panelGroup>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+
+</html>

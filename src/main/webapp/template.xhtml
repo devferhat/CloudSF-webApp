@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title><ui:insert name="title"> Default Title </ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputStylesheet library="awesome" name="css/font-awesome.css" />
+        <h:outputStylesheet library="css" name="layout.css"/>
+
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" autoUpdate="true" showSummary="true" showDetail="true" life="3000"/>
+        <p:layout  style="min-width:400px;min-height:2200px;" >
+            <p:layoutUnit position="north" size="570" >
+
+                <h:form id="formnorth1">
+                    <header>
+
+                        <div id="header-content">
+
+                            <div id="logo">
+
+                                <p:graphicImage value="img/logocloudsf.PNG" alt="CloudSF" width="113" 
+                                                height="20" >
+                                </p:graphicImage>
+
+                            </div>
+
+                            <h:commandLink                             
+                                action="index?faces-redirect=true"
+                                style=" margin-left: 757px;                                           
+                                float: left;
+                                background: url(../img/login.png) no-repeat !important;"> 
+                                <p:graphicImage value="img/login.png" alt="CloudSF" width="73" 
+                                                height="19"  >
+                                </p:graphicImage>
+
+                            </h:commandLink>  
+                        </div>
+                       
+                    </header>
+                    <subheader>
+                        <div id="subheader-content">
+                             <h:commandLink                             
+                                action="index?faces-redirect=true"
+                                style=" margin-left: 934px;                                           
+                                float: left;color: #b51628 !important;" value="GER">                    
+                             </h:commandLink>
+                            <h:commandLink                             
+                                action="index?faces-redirect=true"
+                                style=" margin-left: 10px;                                           
+                                float: right;color: #b51628 !important;" value="FR">                    
+                            </h:commandLink>  
+                            <h:commandLink                             
+                                action="index?faces-redirect=true"
+                                style=" margin-left: 1px;                                           
+                                float: right;color: #b51628 !important;" value="ENG">                    
+                            </h:commandLink>  
+                        </div>
+                    </subheader>
+                </h:form>
+                
+                    <div id="main">
+                        <div class="visual-block">
+                            <h2>CloudSF</h2>
+                            <span class="heading">Cloud Services Selection Framework </span>
+                            <p:graphicImage value="img/swissmade3.PNG" alt="CloudSF" ></p:graphicImage>
+                            <div style="border-top-width: 1px; border-top-style: solid; border-top-color: 
+                                 rgb(204, 204, 204); padding: 10px 0px;" >
+                                <p:panelGrid columns="2" >
+                                    <p:graphicImage value="img/how.PNG" alt="CloudSF"  width="720" 
+                                                    height="215" ></p:graphicImage>
+                                    <p:media value="http://www.youtube.com/v/ae_DKNwK_ms" width="320" 
+                                             height="215" player="flash" />
+
+                                </p:panelGrid> 
+
+                            </div>
+                            <div style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: 
+                                 rgb(204, 204, 204)" >
+
+                            </div>
+
+                        </div>
+                    </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="325">
+                <ui:insert name="filterBar"> </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"> </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100">
+                <p:graphicImage value="img/hecocto.jpg" alt="CloudSF" width="313" 
+                                height="85" style="float: bottom" ></p:graphicImage>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>
