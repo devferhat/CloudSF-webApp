@@ -45,8 +45,8 @@ and open the template in the editor.
 
                     <p:panel header="#{cloudProvider.providerName}" style="text-align:center">  
                         <h:panelGrid columns="1" style="width:100%">  
-                            <p:graphicImage value="/img/swisscom.jpeg" width="270" height="150"/> 
-                            <h:panelGrid columns="2" style="font-weight: bold">
+                            <p:graphicImage value="/img/#{cloudProvider.providerImgpath}" width="90" height="70"/> 
+                            <h:panelGrid columns="2" style="font-weight: bold" width="260" >
                                 <h:outputText value="#{bundle.ListCloudProviderURL}" style="color: #045491"/>
                                 <h:outputText value="#{cloudProvider.providerUrl}"/>                             
                             </h:panelGrid> 
@@ -68,7 +68,7 @@ and open the template in the editor.
                           closable="true" appendToBody="true" width="700">  
                     <p:outputPanel id="cloudProviderDetail" style="text-align:center;" >  
 
-                        <p:graphicImage value="/img/swisscom.jpeg" width="70" height="50"/>  
+                        <p:graphicImage value="/img/#{cloudProviderController.selected.providerImgpath}" width="70" height="50"/>  
 
                         <h:panelGrid  columns="2">  
 

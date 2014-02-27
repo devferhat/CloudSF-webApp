@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CloudProvider.findByProviderCode", query = "SELECT c FROM CloudProvider c WHERE c.providerCode = :providerCode"),
     @NamedQuery(name = "CloudProvider.findByProviderDescription", query = "SELECT c FROM CloudProvider c WHERE c.providerDescription = :providerDescription")})
 public class CloudProvider implements Serializable {
+    @Size(max = 50)
+    @Column(name = "provider_imgpath")
+    private String providerImgpath;
     private static final long serialVersionUID = 1L;
     @Size(max = 100)
     @Column(name = "provider_name")
@@ -110,6 +113,14 @@ public class CloudProvider implements Serializable {
     @Override
     public String toString() {
         return "com.octo.heclausanne.entity.CloudProvider[ providerCode=" + providerCode + " ]";
+    }
+
+    public String getProviderImgpath() {
+        return providerImgpath;
+    }
+
+    public void setProviderImgpath(String providerImgpath) {
+        this.providerImgpath = providerImgpath;
     }
     
 }
