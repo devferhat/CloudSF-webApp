@@ -68,11 +68,11 @@ subheader {
 }
 tbody td {
     // background-image:  !important;
-    background-color:#f7f7f7 !important;
+    //background-color:#f7f7f7 !important;
     background-position:initial !important;
     background-repeat:repeat no-repeat !important;
     overflow:hidden !important;
-    width:100% !important;
+    //width:100% !important;
     padding-bottom:6px;
     padding-top:6px;
     border-spacing: 33px !important;
@@ -80,14 +80,14 @@ tbody td {
 
 td {
     border-top-color:#FFFFFF;
-    border-top-style: dashed !important;
+    border-top-style:hidden !important;
     border-top-width:2px;
     padding:8px;
     vertical-align:middle;
 }
 .ui-panelgrid td {
     border:1px white !important;
-    padding:4px 10px;
+  //  padding:4px 10px;
 }
 .ui-panelgrid {
     border-collapse:separate !important;

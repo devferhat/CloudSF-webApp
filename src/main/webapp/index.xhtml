@@ -44,7 +44,7 @@ and open the template in the editor.
                             rowsPerPageTemplate="9,12,15">  
 
                     <p:panel header="#{cloudProvider.providerName}" style="text-align:center">  
-                        <h:panelGrid columns="1" style="width:100%">  
+                        <h:panelGrid columns="1" style="width:100%" >  
                             <p:graphicImage value="/img/#{cloudProvider.providerImgpath}" width="90" height="70"/> 
                             <h:panelGrid columns="2" style="font-weight: bold" width="260" >
                                 <h:outputText value="#{bundle.ListCloudProviderURL}" style="color: #045491"/>
@@ -64,27 +64,41 @@ and open the template in the editor.
 
                 </p:dataGrid>  
 
-                <p:dialog header="Cloud Provider Detail" widgetVar="cloudProviderDialog" 
-                          closable="true" appendToBody="true" width="700">  
-                    <p:outputPanel id="cloudProviderDetail" style="text-align:center;" >  
+                <p:dialog header="#{cloudProviderController.selected.providerName} Detail" widgetVar="cloudProviderDialog" 
+                          closable="true" appendToBody="true" width="1000" height="500">   
+                        <p:tabView id="cloudProviderDetail">  
 
-                        <p:graphicImage value="/img/#{cloudProviderController.selected.providerImgpath}" width="70" height="50"/>  
+                            <p:tab id="CloudproviderTab" title="General Information">  
+                                <h:panelGrid columns="1" cellpadding="10">  
 
-                        <h:panelGrid  columns="2">  
+                                    <p:graphicImage value="/img/#{cloudProviderController.selected.providerImgpath}" width="70" height="50"/>  
 
-                            <h:outputLabel for="name" value="#{bundle.ViewCloudProviderLabel_name}" />  
-                            <h:outputText id="name" value="#{cloudProviderController.selected.providerName}" />  
+                                    <h:panelGrid  columns="2" cellpadding="10">  
 
-                            <h:outputLabel for="url" value="#{bundle.ViewCloudProviderLabel_url}" />  
-                            <h:outputText id="url" value="#{cloudProviderController.selected.providerUrl}" />  
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_name}" />  
+                                        <h:outputText id="name" value="#{cloudProviderController.selected.providerName}" style="font-weight: bold" />  
 
-                            <h:outputLabel for="descr" value="#{bundle.ViewCloudProviderLabel_url}" />  
-                            <h:inputTextarea  rows="3" id="descr"  disabled="true"
-                                              value="#{cloudProviderController.selected.providerDescription}" />  
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_url}" />  
+                                        <h:outputText id="url" value="#{cloudProviderController.selected.providerUrl}" style="font-weight: bold"/>  
 
-                        </h:panelGrid>  
-                    </p:outputPanel>  
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_description}" />  
+                                        <h:inputTextarea  rows="5" id="descr"  cols="70" disabled="true"
+                                                          value="#{cloudProviderController.selected.providerDescription}" style="font-weight: bold"/>  
+
+                                    </h:panelGrid>  
+                                </h:panelGrid>  
+
+                            </p:tab>  
+                            <p:tab id="CloudproviderTab1" title="Cloud Services Features" disabled="true">
+                                
+                            </p:tab>
+                            <p:tab id="CloudproviderTab2" title="Cloud Services Pricing" disabled="true">
+                                
+                            </p:tab>
+
+                        </p:tabView> 
                 </p:dialog>
+               
             </h:form>
         </ui:define>
     </ui:composition>
