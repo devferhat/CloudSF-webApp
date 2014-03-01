@@ -37,18 +37,18 @@ and open the template in the editor.
 
         <ui:define name="body">
             <h:form id="ListCloudProvidersForm">
-                <p:dataGrid var="cloudProvider" value="#{cloudProviderController.items}" columns="3"  
+                <p:dataGrid var="cloudProvider" value="#{cloudProviderFilterController.modelitems}" columns="3"  
                             rows="12" paginator="true"  
                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} 
                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
                             rowsPerPageTemplate="9,12,15">  
 
-                    <p:panel header="#{cloudProvider.providerName}" style="text-align:center">  
+                    <p:panel header="#{cloudProvider.cloudProvider.providerName}" style="text-align:center">  
                         <h:panelGrid columns="1" style="width:100%" >  
-                            <p:graphicImage value="/img/#{cloudProvider.providerImgpath}" width="90" height="70"/> 
+                            <p:graphicImage value="/img/#{cloudProvider.cloudProvider.providerImgpath}" width="90" height="70"/> 
                             <h:panelGrid columns="2" style="font-weight: bold" width="260" >
                                 <h:outputText value="#{bundle.ListCloudProviderURL}" style="color: #045491"/>
-                                <h:outputText value="#{cloudProvider.providerUrl}"/>                             
+                                <h:outputText value="#{cloudProvider.cloudProvider.providerUrl}"/>                             
                             </h:panelGrid> 
 
 
@@ -57,33 +57,54 @@ and open the template in the editor.
                                            title="View Detail">  
                                 <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />   
                                 <f:setPropertyActionListener value="#{cloudProvider}"   
-                                                             target="#{cloudProviderController.selected}" />  
+                                                             target="#{cloudProviderFilterController.selectedmodel}" />  
                             </p:commandLink>  
                         </h:panelGrid>  
                     </p:panel>  
 
                 </p:dataGrid>  
 
-                <p:dialog header="#{cloudProviderController.selected.providerName} Detail" widgetVar="cloudProviderDialog" 
+                <p:dialog header="#{cloudProviderFilterController.selectedmodel.cloudProvider.providerName} 
+                          Detail" widgetVar="cloudProviderDialog" 
                           closable="true" appendToBody="true" width="1000" height="500">   
                         <p:tabView id="cloudProviderDetail">  
 
                             <p:tab id="CloudproviderTab" title="General Information">  
                                 <h:panelGrid columns="1" cellpadding="10">  
 
-                                    <p:graphicImage value="/img/#{cloudProviderController.selected.providerImgpath}" width="70" height="50"/>  
+                                    <p:graphicImage value="/img/#{cloudProviderFilterController.selectedmodel.cloudProvider.providerImgpath}" 
+                                                    width="70" height="50"/>  
 
                                     <h:panelGrid  columns="2" cellpadding="10">  
 
                                         <h:outputText value="#{bundle.ViewCloudProviderLabel_name}" />  
-                                        <h:outputText id="name" value="#{cloudProviderController.selected.providerName}" style="font-weight: bold" />  
+                                        <h:outputText id="name" value="#{cloudProviderFilterController.selectedmodel.cloudProvider.providerName}" style="font-weight: bold" />  
 
                                         <h:outputText value="#{bundle.ViewCloudProviderLabel_url}" />  
-                                        <h:outputText id="url" value="#{cloudProviderController.selected.providerUrl}" style="font-weight: bold"/>  
+                                        <h:outputText id="url" value="#{cloudProviderFilterController.selectedmodel.cloudProvider.providerUrl}" 
+                                                      style="font-weight: bold"/>  
 
                                         <h:outputText value="#{bundle.ViewCloudProviderLabel_description}" />  
                                         <h:inputTextarea  rows="5" id="descr"  cols="70" disabled="true"
-                                                          value="#{cloudProviderController.selected.providerDescription}" style="font-weight: bold"/>  
+                                                          value="#{cloudProviderFilterController.selectedmodel.cloudProvider.providerDescription}"
+                                                          style="font-weight: bold"/>  
+                                        
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_certificates}" />  
+                                        <h:outputText id="certif" value="#{cloudProviderFilterController.selectedmodel.certificates}" 
+                                                      style="font-weight: bold"/>  
+                                        
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_compliances}" />  
+                                        <h:outputText id="compl" value="#{cloudProviderFilterController.selectedmodel.complianceCertificates}" 
+                                                      style="font-weight: bold"/> 
+                                        
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_deployementmodel}" />  
+                                        <h:outputText id="depl" value="#{cloudProviderFilterController.selectedmodel.deploymentModels}" 
+                                                      style="font-weight: bold"/> 
+                                        
+                                        <h:outputText value="#{bundle.ViewCloudProviderLabel_servicemodels}" />  
+                                        <h:outputText id="smodel" value="#{cloudProviderFilterController.selectedmodel.serviceModels}" 
+                                                      style="font-weight: bold"/>  
+                                        
 
                                     </h:panelGrid>  
                                 </h:panelGrid>  

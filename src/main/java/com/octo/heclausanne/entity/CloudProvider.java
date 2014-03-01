@@ -7,16 +7,23 @@
 package com.octo.heclausanne.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,6 +39,30 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CloudProvider.findByProviderCode", query = "SELECT c FROM CloudProvider c WHERE c.providerCode = :providerCode"),
     @NamedQuery(name = "CloudProvider.findByProviderDescription", query = "SELECT c FROM CloudProvider c WHERE c.providerDescription = :providerDescription")})
 public class CloudProvider implements Serializable {
+    @JoinTable(name = "filter_servicemodel", joinColumns = {
+        @JoinColumn(name = "provider_code", referencedColumnName = "provider_code")}, inverseJoinColumns = {
+        @JoinColumn(name = "sm_code", referencedColumnName = "sm_code")})
+    @ManyToMany
+    private Collection<ServiceModel> serviceModelCollection;
+    @ManyToMany(mappedBy = "cloudProviderCollection")
+    private Collection<Certificate> certificateCollection;
+    @JoinTable(name = "filter_location", joinColumns = {
+        @JoinColumn(name = "provider_code", referencedColumnName = "provider_code")}, inverseJoinColumns = {
+        @JoinColumn(name = "loca_code", referencedColumnName = "loca_code")})
+    @ManyToMany
+    private Collection<Location> locationCollection;
+    @JoinTable(name = "filter_compliance", joinColumns = {
+        @JoinColumn(name = "code_provider", referencedColumnName = "provider_code")}, inverseJoinColumns = {
+        @JoinColumn(name = "code_compliance", referencedColumnName = "compliance_code")})
+    @ManyToMany
+    private Collection<ComplianceCertificate> complianceCertificateCollection;
+    @JoinTable(name = "filter_deploymentmodel", joinColumns = {
+        @JoinColumn(name = "provider_code", referencedColumnName = "provider_code")}, inverseJoinColumns = {
+        @JoinColumn(name = "deploy_code", referencedColumnName = "deploy_code")})
+    @ManyToMany
+    private Collection<DeploymentModel> deploymentModelCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "providerCode")
+    private Collection<FilterApptype> filterApptypeCollection;
     @Size(max = 50)
     @Column(name = "provider_imgpath")
     private String providerImgpath;
@@ -121,6 +152,60 @@ public class CloudProvider implements Serializable {
 
     public void setProviderImgpath(String providerImgpath) {
         this.providerImgpath = providerImgpath;
+    }
+
+    @XmlTransient
+    public Collection<ServiceModel> getServiceModelCollection() {
+        return serviceModelCollection;
+    }
+
+    public void setServiceModelCollection(Collection<ServiceModel> serviceModelCollection) {
+        this.serviceModelCollection = serviceModelCollection;
+    }
+
+    @XmlTransient
+    public Collection<Certificate> getCertificateCollection() {
+        return certificateCollection;
+    }
+
+    public void setCertificateCollection(Collection<Certificate> certificateCollection) {
+        this.certificateCollection = certificateCollection;
+    }
+
+    @XmlTransient
+    public Collection<Location> getLocationCollection() {
+        return locationCollection;
+    }
+
+    public void setLocationCollection(Collection<Location> locationCollection) {
+        this.locationCollection = locationCollection;
+    }
+
+    @XmlTransient
+    public Collection<ComplianceCertificate> getComplianceCertificateCollection() {
+        return complianceCertificateCollection;
+    }
+
+    public void setComplianceCertificateCollection(Collection<ComplianceCertificate> complianceCertificateCollection) {
+        this.complianceCertificateCollection = complianceCertificateCollection;
+    }
+
+    @XmlTransient
+    public Collection<DeploymentModel> getDeploymentModelCollection() {
+        return deploymentModelCollection;
+    }
+
+    public void setDeploymentModelCollection(Collection<DeploymentModel> deploymentModelCollection) {
+        this.deploymentModelCollection = deploymentModelCollection;
+    }
+
+    @XmlTransient
+    public Collection<FilterApptype> getFilterApptypeCollection() {
+        return filterApptypeCollection;
+    }
+
+    public void setFilterApptypeCollection(Collection<FilterApptype> filterApptypeCollection) {
+        this.filterApptypeCollection = filterApptypeCollection;
     }
     
 }
